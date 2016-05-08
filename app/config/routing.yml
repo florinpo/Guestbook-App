@@ -1,0 +1,11 @@
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+root:
+    path: /guestbook
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: guestbook_main
+        permanent: true

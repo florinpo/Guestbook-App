@@ -1,0 +1,79 @@
+{% extends 'guestbook/layout.html.twig' %}
+
+{% block content %}
+
+    <section class="new-guestbook" class="new-guestbook-block">
+        <h2>Post Message</h2>
+        {{ form_start(form,  {'attr': {'novalidate': 'novalidate', 'autocomplete': 'off'}, 'action': path('guestbook_new'), 'method': 'POST'}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            <div class="sr-only">
+                {{ form_label(form.name) }}
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                </span>
+                {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'name', 'type':'text'}}) }}
+            </div>
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div class="form-group">
+            <div class="sr-only">
+                {{ form_label(form.email) }}
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">@</span>
+                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'email', 'type':'email'}}) }}
+            </div>
+            {{ form_errors(form.email, {'attr': {'class': 'help-block'}}) }}
+        </div>
+
+        <div class="form-group">
+            <div class="sr-only">
+                {{ form_label(form.website) }}
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                </span>
+                {{ form_widget(form.website, {'attr': {'class': 'form-control', 'placeholder': 'website', 'type':'text'}}) }}
+            </div>
+            {{ form_errors(form.website) }}
+        </div>
+
+        <div class="form-group">
+            <div class="sr-only">
+                {{ form_label(form.comment) }}
+            </div>
+            {{ form_widget(form.comment, {'attr': {'class': 'form-control', 'placeholder': 'your message...'}}) }}
+            {{ form_errors(form.comment) }}
+        </div>
+
+        <div class="form-group">
+            <div class="sr-only">
+                {{ form_label(form.file) }}
+            </div>
+            {{ form_widget(form.file) }}
+            {{ form_errors(form.file) }}
+        </div>
+
+        <div class="form-group">
+            <div>
+                {{ form_label(form.captcha_code, 'Verification code') }}
+                {{ form_widget(form.captcha_code, {'attr': {'class': 'form-control verification-code', 'type': 'text'}}) }}
+                {{ form_errors(form.captcha_code) }}
+            </div>
+        </div>
+
+        <div class="form-group form-actions">
+            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_widget(form.reset, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+
+{% endblock %}

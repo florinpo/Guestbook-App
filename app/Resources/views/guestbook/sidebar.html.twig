@@ -1,0 +1,36 @@
+<div class="main--sidebar">
+    <br />
+    <!-- Search -->
+    <section id="quick-search" class="search-block main--sidebar-block p-a-3">
+        {{ form_start(searchForm,  {'attr': {'novalidate': 'novalidate', 'autocomplete': 'off'}, 'action': path('guestbook_main')} ) }}
+            <div class="form-group">
+                <div class="input-group">
+                    {{ form_widget(searchForm.query, {'attr': {'class': 'form-control', 'placeholder': 'Search for...', 'type':'text'}}) }}
+                    <span class="input-group-btn">
+                        {{ form_widget(searchForm.submit, {'attr': {'class': 'btn btn-default'}, 'label': 'Go'}) }}
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </div>
+        {{ form_end(searchForm) }}
+    </section>
+    <!-- Latest posts -->
+    <section id="latest-posts" class="latest-posts-block main--sidebar-block">
+        <h3>Latest posts</h3>
+        <ul class="list-unstyled">
+            {% for post in latestPosts %}
+                <li>
+                    <div class="sidebar--post">
+                        <div class="sidebar--post-thumbnail">
+                        </div>
+                        <div class="sidebar--post-content">
+                            <a href="{{ path('guestbook_show', {'id': post.id}) }}">
+                                {{ post.comment|length > 50 ? post.comment|slice(0, 50) ~ '...' : post.comment  }}
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>

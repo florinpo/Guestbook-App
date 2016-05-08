@@ -1,0 +1,15 @@
+{% extends 'guestbook/layout.html.twig' %}
+
+{% block content %}
+    <br /><br />
+    <article id="post-item-{{ post.id }}">
+        <div class="post-item-detail">
+            <p class="lead">by {{ post.name }}</p>
+            <p class="text-muted">posted on {{ post.createdAt|date('Y-m-d') }}</p>
+            <p>
+                {{ post.comment }}
+                <span>&nbsp;</span>
+            </p>
+        </div>
+    </article>
+{% endblock %}

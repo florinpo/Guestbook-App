@@ -1,0 +1,56 @@
+{% extends 'guestbook/layout.html.twig' %}
+
+{% block content %}
+    <section class="new-guestbook" class="new-guestbook-block">
+        <h2>Post Message</h2>
+        {{ form_start(form,  {'attr': {'novalidate': 'novalidate'},'action': path('guestbook_new'), 'method': 'POST'}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                </span>
+                {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'name', 'type':'text'}}) }}
+            </div>
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">@</span>
+                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'email', 'type':'email'}}) }}
+            </div>
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">
+                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                </span>
+                {{ form_widget(form.website, {'attr': {'class': 'form-control', 'placeholder': 'website', 'type':'text'}}) }}
+            </div>
+            {{ form_errors(form.website) }}
+        </div>
+
+        <div class="form-group">
+            {#{{ form_label(form.comment) }}#}
+            {{ form_errors(form.comment) }}
+            {{ form_widget(form.comment) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.captchaCode) }}
+            {{ form_errors(form.captchaCode) }}
+            {{ form_widget(form.captchaCode) }}
+        </div>
+
+        <div class="form-group form-actions">
+            {{ form_widget(form.save) }}
+            {{ form_widget(form.reset) }}
+        </div>
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

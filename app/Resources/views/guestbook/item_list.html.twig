@@ -1,0 +1,22 @@
+<div id="{{ post.id }}" class="row post">
+    <div class="col-md-3">
+        <div class="post-list--thumbnail">
+            {% if post.path is not null %}
+                <img src="{{ asset(gb_uploads_path ~ post.path) }}" alt="Example" />
+            {% else %}
+                {% image 'assets/img/thumbnails/empty_100.png' %}
+                    <img src="{{ asset_url }}" alt="Example" />
+                {% endimage %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-9">
+        <p class="lead">by {{ post.name }}</p>
+        <p class="text-muted">posted on {{ post.createdAt|date('Y-m-d') }}</p>
+        <p>
+            {{ post.comment }}
+            <span>&nbsp;</span>
+            <a href="{{ path('guestbook_show', {'id': post.id}) }}">read more...</a>
+        </p>
+    </div>
+</div>
